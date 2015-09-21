@@ -1,0 +1,1 @@
+alter table testdata add column bar3 varchar(25);

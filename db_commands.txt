@@ -1,0 +1,3 @@
+SELECT pg_terminate_backend(pg_stat_activity.procpid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'e-finance' AND procpid <> pg_backend_pid();
+
+/opt/bmc/RLM/pgsql/bin/psql -U ef -h localhost -d e-finance_test -c "alter table testdata drop bar2;"

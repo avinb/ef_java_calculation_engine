@@ -8,6 +8,7 @@ public class DBTest {
 
     String foo = "Not Connected";
     int bar = -1;
+    int bar3 = -1;
 
     public void init() {
         try{
@@ -42,4 +43,5 @@ public class DBTest {
 
     public String getFoo() { return foo; }
     public int getBar() { return bar;}
+    public int getBar3() { return bar3;}
 }
