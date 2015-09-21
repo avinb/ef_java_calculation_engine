@@ -25,7 +25,7 @@ public class Users {
                     Statement stmt = conn.createStatement();
                     ResultSet rst =
                             stmt.executeQuery(
-                                    "select first_name, last_name from testdata");
+                                    "select first_name, last_name from users");
                     if(rst.next()) {
                         firstName=rst.getString(1);
                         lastName=rst.getString(2);
