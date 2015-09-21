@@ -1,13 +1,13 @@
-package foo;
+package calculation_engine;
 
 import javax.naming.*;
 import javax.sql.*;
 import java.sql.*;
 
-public class DBTest {
+public class Users {
 
-    String foo = "Not Connected";
-    int bar = -1;
+    String firstName = "Not Connected";
+    String lastName = "Not Connected";
 
     public void init() {
         try{
@@ -21,14 +21,14 @@ public class DBTest {
                 Connection conn = ds.getConnection();
 
                 if(conn != null)  {
-                    foo = "Got Connection "+conn.toString();
+                    firstName = "Got Connection "+conn.toString();
                     Statement stmt = conn.createStatement();
                     ResultSet rst =
                             stmt.executeQuery(
-                                    "select id, foo, bar from testdata");
+                                    "select first_name, last_name from testdata");
                     if(rst.next()) {
-                        foo=rst.getString(2);
-                        bar=rst.getInt(3);
+                        firstName=rst.getString(1);
+                        lastName=rst.getString(2);
                     }
                     conn.close();
                 }
@@ -38,6 +38,6 @@ public class DBTest {
         }
     }
 
-    public String getFoo() { return foo; }
-    public int getBar() { return bar;}
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName;}
 }
