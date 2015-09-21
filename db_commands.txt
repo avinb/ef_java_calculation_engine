@@ -1,3 +1,13 @@
 SELECT pg_terminate_backend(pg_stat_activity.procpid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'e-finance' AND procpid <> pg_backend_pid();
 
-/opt/bmc/RLM/pgsql/bin/psql -U ef -h localhost -d e-finance_test -c "alter table testdata drop bar2;"
+alter database "e-finance" rename to "e-finance_test"
+
+create table testdata (id serial primary key, foo varchar(25), bar int);
+
+/opt/bmc/RLM/pgsql/bin/psql -U ef -h localhost -d e-finance_test -c "..."
+
+insert into testdata (foo, bar) values ('hi', 123);
+
+alter table testdata add column bar2 varchar(25);
+update testdata set bar2 = 'new field';
+alter table testdata drop column bar2;
