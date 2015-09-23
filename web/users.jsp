@@ -13,6 +13,8 @@
     First name: <%= users.getFirstName() %>
     <br/>
     Last name: <%= users.getLastName() %>
+    <br/>
+    Age: <%= users.getAge() %>
 
   </body>
 </html>

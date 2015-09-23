@@ -8,6 +8,7 @@ public class Users {
 
     String firstName = "Not Connected";
     String lastName = "Not Connected";
+    int age = -1;
 
     public void init() {
         try{
@@ -25,10 +26,11 @@ public class Users {
                     Statement stmt = conn.createStatement();
                     ResultSet rst =
                             stmt.executeQuery(
-                                    "select first_name, last_name from users");
+                                    "select first_name, last_name, age from users");
                     if(rst.next()) {
                         firstName=rst.getString(1);
                         lastName=rst.getString(2);
+                        age=rst.getInt(3);
                     }
                     conn.close();
                 }
@@ -40,4 +42,5 @@ public class Users {
 
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName;}
+    public int getAge() { return age;}
 }
