@@ -36,7 +36,7 @@ public class Users {
                 }
             }
         }catch(Exception e) {
-            e.printStackTrace();
+            firstName=e.toString();
         }
     }
 
