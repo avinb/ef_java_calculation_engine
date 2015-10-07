@@ -9,7 +9,7 @@
     users.init();
   %>
 
-  <h2>Results</h2>
+  <h2>Users</h2>
     First name: <%= users.getFirstName() %>
     <br/>
     Last name: <%= users.getLastName() %>
