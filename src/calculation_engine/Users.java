@@ -34,6 +34,8 @@ public class Users {
                     }
                     conn.close();
                 }
+            } else{
+                firstName="DataSource is null";
             }
         }catch(Exception e) {
             firstName=e.toString();
