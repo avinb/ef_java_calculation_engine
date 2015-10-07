@@ -1,13 +1,55 @@
-SELECT pg_terminate_backend(pg_stat_activity.procpid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'e-finance' AND procpid <> pg_backend_pid();
+POSTGRES
+--------
+/opt/bmc/RLM/pgsql/bin/psql -U ef -h localhost -d e-finance_test -c "<sql statement>"
+
 
 alter database "e-finance" rename to "e-finance_test"
 
 create table users (id serial primary key, first_name varchar(255), last_name varchar(255));
 
-/opt/bmc/RLM/pgsql/bin/psql -U ef -h localhost -d e-finance_test -c "..."
-
 insert into users (first_name, last_name) values ('Niek', 'Bartholomeus');
 
 alter table users add column age int;
+update users set age = 18;
+alter table users drop column age;
+
+# disconnect clients
+SELECT pg_terminate_backend(pg_stat_activity.procpid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'e-finance' AND procpid <> pg_backend_pid();
+
+
+
+ORACLE
+------
+-----------
+CREATE TABLE USERS
+(
+   ID           NUMBER (10),
+   FIRST_NAME   VARCHAR2 (255),
+   LAST_NAME    VARCHAR2 (255)
+)
+NOCACHE
+LOGGING;
+
+CREATE SEQUENCE SEQ_USERS_ID START WITH 1
+                             INCREMENT BY 1
+                             MAXVALUE 9999999999999999999999999999
+                             NOMINVALUE
+                             NOORDER
+                             NOCYCLE
+                             CACHE 20;
+
+CREATE OR REPLACE TRIGGER "E-FINANCE_TEST".TR_USERS_ID
+   BEFORE INSERT
+   ON "E-FINANCE_TEST".USERS
+   REFERENCING NEW AS new OLD AS old
+   FOR EACH ROW
+BEGIN
+   SELECT "E-FINANCE_TEST".SEQ_USERS_ID.NEXTVAL INTO :new.ID FROM DUAL;
+END;
+-----------
+
+insert into users (first_name, last_name) values ('Niek', 'Bartholomeus');
+
+alter table users add age int;
 update users set age = 18;
 alter table users drop column age;
