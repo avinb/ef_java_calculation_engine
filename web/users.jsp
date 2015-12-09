@@ -15,6 +15,8 @@
     Last name: <%= users.getLastName() %>
     <br/>
     Age: <%= users.getAge() %>
+    <br/>
+    Country: <%= users.getCountry() %>
 
   </body>
 </html>
