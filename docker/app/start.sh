@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-echo TOMCAT_ADMIN_PASSWORD=${TOMCAT_ADMIN_PASSWORD} >> /etc/tomcat/tomcat.conf
+touch /usr/local/tomcat/bin/setenv.sh
+echo TOMCAT_ADMIN_PASSWORD=${TOMCAT_ADMIN_PASSWORD} >> ${CATALINA_HOME}/bin/setenv.sh
 
-echo DB_SERVER=${DB_PORT_5432_TCP_ADDR:-${DB_SERVER}} >> /etc/tomcat/tomcat.conf
-echo DB_PORT=${DB_PORT_5432_TCP_PORT:-${DB_PORT}} >> /etc/tomcat/tomcat.conf
+echo DB_SERVER=${DB_PORT_1521_TCP_ADDR:-${DB_SERVER}} >> ${CATALINA_HOME}/bin/setenv.sh
+echo DB_PORT=${DB_PORT_1521_TCP_PORT:-${DB_PORT}} >> /usr/local/tomcat/bin/setenv.sh
 
-echo DB_USERNAME=${DB_USERNAME} >> /etc/tomcat/tomcat.conf
-echo DB_PASSWORD=${DB_PASSWORD} >> /etc/tomcat/tomcat.conf
+echo DB_USERNAME=${DB_USERNAME} >> ${CATALINA_HOME}/bin/setenv.sh
+echo DB_PASSWORD=${DB_PASSWORD} >> ${CATALINA_HOME}/bin/setenv.sh
 
-/usr/local/tomcat/bin/catalina.sh run
+${CATALINA_HOME}/bin/catalina.sh run
