@@ -36,10 +36,9 @@
               auth="Container"
               type="javax.sql.DataSource"
               driverClassName="oracle.jdbc.OracleDriver"
-              factory="org.apache.commons.dbcp.BasicDataSourceFactory"
               url="jdbc:oracle:thin:@${DB_SERVER}:${DB_PORT}:XE"
               username="${DB_USERNAME}"
               password="${DB_PASSWORD}"
-              maxActive="1" />
+    />
 
 </Context>
