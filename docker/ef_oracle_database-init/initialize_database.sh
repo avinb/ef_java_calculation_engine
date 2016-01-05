@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Prevent owner issues on mounted folders
 chown -R oracle:dba /u01/app/oracle
 rm -f /u01/app/oracle/product
@@ -33,21 +32,4 @@ sed -i -E "s/transactions=[^)]+/transactions=$transactions/g" /u01/app/oracle/pr
 
 printf 8080\\n1521\\noracle\\noracle\\ny\\n | /etc/init.d/oracle-xe configure
 
-echo "Database initialized. Please visit http://#container:8080/apex to proceed with configuration"
-
-echo "Starting the database..."
-/etc/init.d/oracle-xe start
-
-sleep 10
-
-echo "Deploying the db scrips..."
-for i in $( ls -d /db_scripts/* | sort -n ); do
-    echo "sqlplus $i";
-    sqlplus sys/oracle as sysdba @$1
-done;
-
-echo "Stopping the database..."
-/etc/init.d/oracle-xe stop
-
-echo "Copying the db data files from /u01/app/oracle/oradata to a location inside the Docker image (/u01/app/oracle/oradata/* is set as a volume in the base Dockerfile)..."
-cp -R /u01/app/oracle/oradata/* /db_data_files
+echo "Database initialized."
