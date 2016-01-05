@@ -32,7 +32,8 @@
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
 
-    <Resource name="jdbc/ef_java_calculation_engine" auth="Container"
+    <Resource name="jdbc/ef_java_calculation_engine"
+              auth="Container"
               type="javax.sql.DataSource"
               driverClassName="oracle.jdbc.OracleDriver"
               factory="org.apache.commons.dbcp.BasicDataSourceFactory"

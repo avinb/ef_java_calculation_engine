@@ -8,4 +8,5 @@ echo DB_PORT=${DB_PORT_1521_TCP_PORT:-${DB_PORT}} >> /usr/local/tomcat/bin/seten
 echo DB_USERNAME=${DB_USERNAME} >> ${CATALINA_HOME}/bin/setenv.sh
 echo DB_PASSWORD=${DB_PASSWORD} >> ${CATALINA_HOME}/bin/setenv.sh
 
-${CATALINA_HOME}/bin/catalina.sh run
+${CATALINA_HOME}/bin/startup.sh
+tail -f ${CATALINA_HOME}/logs/catalina.out
