@@ -7,4 +7,4 @@ echo DB_PORT=${DB_PORT_5432_TCP_PORT:-${DB_PORT}} >> /etc/tomcat/tomcat.conf
 echo DB_USERNAME=${DB_USERNAME} >> /etc/tomcat/tomcat.conf
 echo DB_PASSWORD=${DB_PASSWORD} >> /etc/tomcat/tomcat.conf
 
-$CATALINA_HOME/catalina.sh run
+/usr/local/tomcat/catalina.sh run
