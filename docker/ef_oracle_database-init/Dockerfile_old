@@ -1,7 +1,7 @@
-FROM wnameless/oracle-xe-11g
+FROM sath89/oracle-xe-11g
 
-#COPY initialize_database.sh /
-#RUN /initialize_database.sh
+COPY initialize_database.sh /
+RUN /initialize_database.sh
 
 COPY execute_db_scripts.sh /
 COPY db_scripts /db_scripts
