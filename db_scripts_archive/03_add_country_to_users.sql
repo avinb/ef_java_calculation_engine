@@ -1,6 +1,6 @@
 WHENEVER SQLERROR EXIT SQL.SQLCODE
-alter table users add country varchar2(255);
-update users set country = 'Belgium' where first_name = 'Niek';
+alter table "E-FINANCE".USERS add country varchar2(255);
+update "E-FINANCE".USERS set country = 'Belgium' where first_name = 'Niek';
 
 QUIT;
 /
