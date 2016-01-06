@@ -1,3 +1,9 @@
+alter database datafile '/u01/app/oracle/oradata/XE/undotbs1.dbf' resize 4 M ;
+alter database datafile '/u01/app/oracle/oradata/XE/users.dbf' resize 3 M ;
+alter database datafile '/u01/app/oracle/oradata/XE/sysaux.dbf' resize 610 M ;
+
+ALTER SYSTEM SET recyclebin = OFF;
+
 CREATE USER "E-FINANCE" IDENTIFIED BY VALUES 'S:A05B197E10766B4358B44E159386ED8EA1252CB895B41A12B10DB2C4F6D2;776020FF9C17D3A3'
   DEFAULT TABLESPACE "USERS"
   TEMPORARY TABLESPACE "TEMP";
