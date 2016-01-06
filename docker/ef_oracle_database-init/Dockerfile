@@ -1,17 +1,9 @@
 FROM wnameless/oracle-xe-11g
 
-#COPY initialize_database.sh /
-#RUN /initialize_database.sh
+ENV ORACLE_HOME /u01/app/oracle/product/11.2.0/xe
+ENV PATH $ORACLE_HOME/bin:$PATH
+ENV ORACLE_SID=XE
 
 COPY execute_db_scripts.sh /
 COPY db_scripts /db_scripts
 RUN /execute_db_scripts.sh
-
-COPY copy_db_files_into_image.sh /
-RUN /copy_db_files_into_image.sh
-
-VOLUME /db_data_files_destination
-
-COPY export_db_files.sh /
-ENTRYPOINT ["/export_db_files.sh"]
-CMD [""]
