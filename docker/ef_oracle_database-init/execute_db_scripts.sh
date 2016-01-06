@@ -4,8 +4,8 @@ echo "Starting the database..."
 
 echo "Deploying the db scrips..."
 for i in $( ls -d /db_scripts/* | sort -n ); do
-    echo "sqlplus $i";
-    sqlplus -S system/oracle @$1
+    echo "sqlplus -S system/oracle @$i";
+    cat $i | sqlplus -S system/oracle
 done;
 
 echo "Stopping the database..."
