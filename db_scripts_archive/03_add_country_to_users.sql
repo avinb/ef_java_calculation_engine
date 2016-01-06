@@ -4,4 +4,3 @@ update "E-FINANCE".USERS set country = 'Belgium' where first_name = 'Niek';
 COMMIT;
 
 QUIT;
-/

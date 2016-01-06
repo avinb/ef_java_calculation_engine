@@ -4,4 +4,3 @@ update "E-FINANCE".USERS set age = 39 where last_name like 'Bartholomeus%';
 COMMIT;
 
 QUIT;
-/
