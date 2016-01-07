@@ -11,15 +11,10 @@ cd docker/ef_java_calculation_engine
 echo "Building a docker image of the app..."
 docker build -t bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION} .
 
-echo "Tagging the created image as 'latest'..."
-docker tag -f bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION} bmcrlm/ef_java_calculation_engine:latest
-
 echo "Pushing both docker images to the docker hub..."
 docker push bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
-docker push bmcrlm/ef_java_calculation_engine:latest
 
 echo "Removing the images from the local repository..."
 docker rmi bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
-docker rmi bmcrlm/ef_java_calculation_engine:latest
 
 
