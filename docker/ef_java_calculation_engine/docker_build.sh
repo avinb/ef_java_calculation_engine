@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+echo "=========================================================="
+echo "CREATE DOCKER IMAGE FOR ef_java_calculation_engine"
+echo "=========================================================="
+echo "Unzipping the war file..."
+mkdir docker/ef_java_calculation_engine/to_be_deployed
+unzip -d docker/ef_java_calculation_engine/to_be_deployed dist/ef_java_calculation_engine.war
+
+cd docker/ef_java_calculation_engine
+
+echo "Building a docker image of the app..."
+docker build -t bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION} .
+
+echo "Tagging the created image as 'latest'..."
+docker tag -f bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION} bmcrlm/ef_java_calculation_engine:latest
+
+echo "Pushing both docker images to the docker hub..."
+docker push bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
+docker push bmcrlm/ef_java_calculation_engine:latest
+
+echo "Removing the images from the local repository..."
+docker rmi bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
+docker rmi bmcrlm/ef_java_calculation_engine:latest
+
+
