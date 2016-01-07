@@ -7,4 +7,4 @@ ENV ORACLE_SID XE
 COPY execute_db_scripts.sh /
 COPY db_scripts /db_scripts
 
-CMD ["/execute_db_scripts.sh"]
+ENTRYPOINT ["/execute_db_scripts.sh"]
