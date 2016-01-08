@@ -14,7 +14,7 @@ docker build -t bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION} .
 echo "Pushing the docker image to the docker hub..."
 docker push bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
 
-#echo "Removing the image from the local repository..."
-#docker rmi bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
+echo "Removing the image from the local repository..."
+docker rmi bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
 
 
