@@ -34,7 +34,7 @@ Therefore, we will create a data volume container the first time, when the envir
 
 ### 3] the "database server upgrade" use case (e.g. migrate Oracle 11g to 12g)
 
-We can simply use the data volume container as explained in the previous use case to upgrade our database server. 
+The data volume container as explained in the previous use case only contains the data, not the database product itself, i.e. the logic. When the time comes to upgrade the database product we can simply (well, nothing is "simple" in Oracle land if you're not a fully certified Oracle DBA) pass the data volume container to the new version of the database container.
 
 ### Docker commands
 
