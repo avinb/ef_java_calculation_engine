@@ -12,9 +12,9 @@ echo "Building a docker image of the app..."
 docker build -t bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION} .
 
 #echo "Pushing the docker image to the docker hub..."
-#ocker push bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
+#docker push bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
 
-#echo "Removing the image from the local repository..."
+echo "Removing the image from the local repository..."
 #docker rmi bmcrlm/ef_java_calculation_engine:${COMPONENT_VERSION}
 
 
