@@ -1,1 +1,0 @@
-select * from "E-FINANCE".users;

@@ -1,0 +1,1 @@
+update users set age = age + 1;
