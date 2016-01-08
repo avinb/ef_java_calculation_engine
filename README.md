@@ -30,7 +30,7 @@ Note that the reduced risk and increased speed at deploy time may come with a pr
 
 In this use case the database is kept between the subsequent deployments, because testers may have manually entered their test data, or even worse, it's the production environment ;-) The execution of the migration scripts that come with this release therefore has to be done at deploy time, contrary to the first use case.
  
-Therefore, we will create a data volume container the first time. During deployment we will pass this container's volume to a database container and link that container on its turn to a data migration container in order to execute the migration scripts on it. After the tests only the data volume container will remain.
+Therefore, we will create a data volume container the first time, when the environment is set up (step 0.1). During deployment we will pass this container's volume to a database container (step 3.1) and link that container in its turn to a data migration container (step 3.2) in order to execute the migration scripts on it. After the tests only the data volume container will remain.
 
 ### 3] the "database server upgrade" use case (e.g. migrate Oracle 11g to 12g)
 
