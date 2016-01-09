@@ -23,15 +23,6 @@ Following the Docker mindset the deployment of the application should be done as
 
 Note that the reduced risk and increased speed at deploy time may come with a price of having to transfer and store big files. As an example: an Oracle XE database that contains one table with a couple of records in it will still produce data files of 1.14 GB! This is mainly due to huge default sizes of the SYSAUX and SYSTEM tablespaces. When transferred over the wire to the Docker Hub this comes down to about 150MB.
 
-### 2] the "persistent database" use case targeted at manual testing environments
-
-![alt text](https://github.com/BMC-RLM/ef_java_calculation_engine/blob/master/persistent_db.png "persistent db")
-
-
-In this use case the database is kept between the subsequent deployments, because testers may have manually entered their test data, or even worse, it's the production environment ;-) The execution of the migration scripts that come with this release therefore has to be done at deploy time, contrary to the first use case.
- 
-Therefore, we will create a data volume container the first time, when the environment is set up (step 0.1). During deployment we will pass this container's volume to a database container (step 3.1) and link that container in its turn to a data migration container (step 3.2) in order to execute the migration scripts on it. After the tests only the data volume container will remain.
-
 #### Docker commands
 
 Step 1 - See the following scripts to build the docker images:
@@ -60,9 +51,14 @@ echo "Step 2.5 - Stop and remove the database container"
 docker rm -f ef_oracle_database_${ENVIRONMENT}
 ```
 
-### 3] the "database server upgrade" use case (e.g. migrate Oracle 11g to 12g)
+### 2] the "persistent database" use case targeted at manual testing environments
 
-The data volume container as explained in the previous use case only contains the data, not the database product itself, i.e. the logic. When the time comes to upgrade the database product we can simply (well, nothing is "simple" in Oracle land if you're not a fully certified Oracle DBA) pass the data volume container to the new version of the database container.
+![alt text](https://github.com/BMC-RLM/ef_java_calculation_engine/blob/master/persistent_db.png "persistent db")
+
+
+In this use case the database is kept between the subsequent deployments, because testers may have manually entered their test data, or even worse, it's the production environment ;-) The execution of the migration scripts that come with this release therefore has to be done at deploy time, contrary to the first use case.
+ 
+Therefore, we will create a data volume container the first time, when the environment is set up (step 0.1). During deployment we will pass this container's volume to a database container (step 3.1) and link that container in its turn to a data migration container (step 3.2) in order to execute the migration scripts on it. After the tests only the data volume container will remain.
 
 #### Docker commands
 
@@ -90,3 +86,6 @@ echo "Step 2.6 - Stop and remove the database container"
 docker rm -f ef_oracle_database_${ENVIRONMENT}
 ```
 
+### 3] the "database server upgrade" use case (e.g. migrate Oracle 11g to 12g)
+
+The data volume container as explained in the previous use case only contains the data, not the database product itself, i.e. the logic. When the time comes to upgrade the database product we can simply (well, nothing is "simple" in Oracle land if you're not a fully certified Oracle DBA) pass the data volume container to the new version of the database container.
